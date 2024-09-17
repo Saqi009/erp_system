@@ -1,0 +1,41 @@
+
+#main-container {
+    width: 50%;
+    margin: auto;
+}
+#heading-1 {
+    text-align: center;
+    color: white;
+}
+
+#add-input{
+width: 50%;
+height: 50px;
+}
+#btn-submit {
+    width: 15%;
+    /* margin: 2% auto; */
+}
+
+.answer {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    gap: 10px;
+}
+
+body {
+    background: rgb(0, 0, 0);
+    background: radial-gradient(circle, rgb(65, 65, 65) 0%, rgb(62, 44, 73) 100%);
+}
+.round {
+    border-radius: 6px;
+}
+
+.text-red {
+    color: red;
+    font-weight: 600;
+}
+
+.red-border {
+    border-color: red;
+}
