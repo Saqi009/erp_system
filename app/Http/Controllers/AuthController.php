@@ -10,7 +10,6 @@ class AuthController extends Controller
     public function login_view()
     {
         return view('auth.login');
-        // sfhkj
     }
 
     public function login(Request $request)
