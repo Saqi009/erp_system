@@ -15,18 +15,16 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            // 'name'=> ['required','string'],
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
-
 
         if (Auth::attempt($request->except(['_token', 'submit']))) {
             $user_type = Auth::user()->user_type;
             if ($user_type == '1') {
                 return redirect()->route('dashboard');
             } else if ($user_type == '2') {
-                return redirect()->back()->with(['firstpanel' => "first Panel"]);
+                return redirect()->route('admin.dashboard');
             } else if ($user_type == '3') {
                 return redirect()->back()->with(['secondpanel' => "Second panel"]);
             } else {

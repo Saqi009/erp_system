@@ -13,11 +13,13 @@
                         <h1 id="heading-1" class="mb-3">Edit Task</h1>
                         @include('partials.alert')
                         <form action="{{ route('todo.update', $task) }}" method="post" class="d-flex">
-                            @method("PATCH")
+                            @method('PATCH')
                             @csrf
                             <input type="text" placeholder="Enter the task." id="add-input"
-                                class="round p-2 gap=3 form-control" name="lists" value="{{ old('lists') ?? $task->lists }}">
+                                class="round p-2 gap=3 form-control" name="lists"
+                                value="{{ old('lists') ?? $task->lists }}">
                             <input type="submit" value="Update" id="btn-submit" class="btn btn-primary ml-2">
+                            <a href="{{ route('todo') }}" class="btn btn-secondary">Back</a>
                         </form>
                         <div>
                             @error('lists')
@@ -26,14 +28,10 @@
                         </div>
 
                     </div>
-                </div>
+                    {{-- </div> --}}
 
+                </div>
             </div>
         </div>
-    </div>
-    </div>
-    </div>
-    </div>
-
     </div>
 @endsection
