@@ -20,7 +20,6 @@
                     <i class="align-middle" data-feather="book"></i> <span class="align-middle">ToDo</span>
                 </a>
             </li>
-
         </ul>
     </div>
 </nav>

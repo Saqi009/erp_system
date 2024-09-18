@@ -41,7 +41,9 @@ Route::controller(profileController::class)->group(function () {
 
 Route::controller(AddAttendanceController::class)->group(function(){
     Route::get('/addattendance', 'addattendance')->name('attendance');
+    Route::post('/addattendance', 'store');
 });
+
 Route::controller(AttendanceReportController::class)->group(function(){
     Route::get('/attendancereport', 'attendancereport')->name('report');
 });
