@@ -20,6 +20,12 @@
                     <i class="align-middle" data-feather="book"></i> <span class="align-middle">ToDo</span>
                 </a>
             </li>
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="{{ route('employee.leads') }}">
+                    <i class="align-middle" data-feather="book"></i> <span class="align-middle">Leads</span>
+                </a>
+            </li>
+
         </ul>
     </div>
 </nav>
