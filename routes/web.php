@@ -50,4 +50,5 @@ Route::controller(AttendanceReportController::class)->group(function(){
 
 Route::controller(AdminDashboard::class)->group(function() {
     Route::get('/admin/dashboard', 'index')->name('admin.dashboard');
+    Route::get('/admin/attendance', 'attendance')->name('admin.attendance');
 });

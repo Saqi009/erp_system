@@ -12,7 +12,7 @@ class AddAttendanceController extends Controller
 {
     public function addattendance(){
         return view('employee.attendance.addattendance', [
-            'time' => Carbon::now()
+            'time' => Carbon::now()->setTimezone('GMT+5')
         ]);
     }
 

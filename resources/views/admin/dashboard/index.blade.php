@@ -10,12 +10,9 @@
                 <div class="card">
                     <div class="card-body">
                         Hello This Dashboard form
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 @endsection
