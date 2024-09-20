@@ -6,22 +6,20 @@ use App\Http\Controllers\admin\AdminDashboard;
 use App\Http\Controllers\employee\TodoController;
 use App\Http\Controllers\admin\RegistrationController;
 use App\Http\Controllers\employee\lead\LeadController;
-use Illuminate\Auth\Middleware\RedirectIfAuthenticated;
-use App\Http\Controllers\employee\profile\profileController;
+use App\Http\Controllers\admin\profile\profileController;
 use App\Http\Controllers\employee\dashboard\DashboardController;
 use App\Http\Controllers\employee\attendance\AttendanceController;
 use App\Http\Controllers\employee\attendance\AddAttendanceController;
 use App\Http\Controllers\employee\attendance\AttendanceReportController;
 
+
 Route::controller(AuthController::class)->group(function () {
-    // Route::middleware(RedirectIfAuthenticated::class)->group(function () {
-        Route::get('/', 'login_view')->name('login');
-        Route::post('/', 'login');
-        // });
+    Route::get('/', 'login_view')->name('login');
+    Route::post('/', 'login')->middleware('admin');
     Route::get('/login', 'logout')->name('logout');
 });
 
-Route::controller(RegistrationController::class)->group(function() {
+Route::controller(RegistrationController::class)->group(function () {
     Route::get('/admin/register', 'index')->name('register');
     Route::post('/admin/register', 'register');
 });

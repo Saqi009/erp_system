@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\employee\profile;
+namespace App\Http\Controllers\admin\profile;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -11,7 +11,7 @@ class profileController extends Controller
 {
     public function profile()
     {
-        return view('employee.profile.index');
+        return view('admin.profile.index');
     }
 
     public function details(Request $request)
