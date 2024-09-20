@@ -1,4 +1,4 @@
-@extends('layout.main')
+@extends('adminlayout.main')
 
 @section('content')
     <div class="container-fluid p-0">
@@ -14,9 +14,6 @@
                             <div class="row">
                                 <div class="col-6">
                                     <h2 class="m-0">leads</h2>
-                                </div>
-                                <div class="col-6 text-end">
-                                    <a href="{{ route('lead.create') }}" class="btn btn-outline-primary">Add lead</a>
                                 </div>
                             </div>
                         </div>
@@ -57,7 +54,7 @@
                                                 <td>{{ $lead->email }}</td>
                                                 <td>{{ $lead->time_zone }}</td>
                                                 <td>
-                                                    <a href="{{ route('employee.lead.show', $lead) }}"
+                                                    <a href="{{ route('admin.lead.show', $lead) }}"
                                                         class="btn btn-primary">Show</a>
                                                     {{-- <form action="{{ route('lead.destroy', $lead) }}" method="post"
                                                         class="d-inline">

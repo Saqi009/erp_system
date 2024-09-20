@@ -3,8 +3,6 @@
 @section('content')
     <div class="container-fluid p-0">
 
-        <h1 class="h3 mb-3">Dashboard</h1>
-
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -23,22 +21,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    @session('success')
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            {{ $value }}
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                    @endsession
-
-                    @session('failure')
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            {{ $value }}
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                    @endsession
-                    {{-- @dump($errors) --}}
-                    {{-- @dump($success) --}}
-                    {{-- @include('partials.alert') --}}
+                    @include('partials.alert')
                     <form action="{{ route('lead.create') }}" method="post">
                         @csrf
                         <div class="mb-3">
@@ -52,7 +35,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="email" class="form-label">email</label>
+                            <label for="email" class="form-label">Email</label>
                             <input type="text" id="email" name="email" placeholder="lead email!"
                                 class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}">
 
@@ -62,7 +45,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="phone_number" class="form-label">phone_number</label>
+                            <label for="phone_number" class="form-label">Phone Number</label>
                             <input type="text" id="phone_number" name="phone_number" placeholder="lead phone_number!"
                                 class="form-control @error('phone_number') is-invalid @enderror"
                                 value="{{ old('phone_number') }}">
@@ -73,7 +56,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="time_zone" class="form-label">time_zone</label>
+                            <label for="time_zone" class="form-label">Timezone</label>
                             <select id="time_zone" name="time_zone"
                                 class="form-select @error('time_zone') is-invalid @enderror">
                                 <option value="">Select a time_zone!</option>
@@ -89,7 +72,8 @@
                         </div>
                         <div class="mb-3">
                             <label for="remark">Remarks: </label>
-                            <textarea name="remark" id="remark" cols="30" rows="6" class="form-control" placeholder="Client Remarks Here"></textarea>
+                            <textarea name="remark" id="remark" cols="30" rows="6" class="form-control"
+                                placeholder="Client Remarks Here"></textarea>
                             {{-- <input type="text" name="remark" id="remark" class="form-control"> --}}
                         </div>
                         <div>
@@ -102,11 +86,7 @@
                 </div>
             </div>
 
-
-
         </div>
     </div>
-    </div>
-    </div>
-    </div>
+
 @endsection

@@ -3,7 +3,16 @@
 @section('content')
     <div class="container-fluid p-0">
 
-        <h1 class="h3 mb-3">Dashboard</h1>
+        <h1 class="h3 mb-3">Attendance</h1>
+
+        <form action="" class="row mb-4">
+            <div class="col-7">
+                <input type="text" class="form-control" id="search" name="search">
+            </div>
+            <div class="col-5">
+                <input type="submit" name="submit" value="submit" class="btn btn-primary">
+            </div>
+        </form>
         {{-- @dump($attendances) --}}
         <div class="row">
             <div class="col-12">

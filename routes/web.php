@@ -4,7 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\admin\AdminDashboard;
 use App\Http\Controllers\employee\TodoController;
+use App\Http\Controllers\admin\RegistrationController;
 use App\Http\Controllers\employee\lead\LeadController;
+use Illuminate\Auth\Middleware\RedirectIfAuthenticated;
 use App\Http\Controllers\employee\profile\profileController;
 use App\Http\Controllers\employee\dashboard\DashboardController;
 use App\Http\Controllers\employee\attendance\AttendanceController;
@@ -12,9 +14,16 @@ use App\Http\Controllers\employee\attendance\AddAttendanceController;
 use App\Http\Controllers\employee\attendance\AttendanceReportController;
 
 Route::controller(AuthController::class)->group(function () {
-    Route::get('/', 'login_view')->name('login');
-    Route::post('/', 'login');
+    // Route::middleware(RedirectIfAuthenticated::class)->group(function () {
+        Route::get('/', 'login_view')->name('login');
+        Route::post('/', 'login');
+        // });
     Route::get('/login', 'logout')->name('logout');
+});
+
+Route::controller(RegistrationController::class)->group(function() {
+    Route::get('/admin/register', 'index')->name('register');
+    Route::post('/admin/register', 'register');
 });
 
 
@@ -40,25 +49,29 @@ Route::controller(profileController::class)->group(function () {
     Route::patch('/profile/password', 'password')->name('profile.password');
 });
 
-Route::controller(AddAttendanceController::class)->group(function(){
+Route::controller(AddAttendanceController::class)->group(function () {
     Route::get('/addattendance', 'addattendance')->name('attendance');
     Route::post('/addattendance', 'store');
 });
 
-Route::controller(AttendanceReportController::class)->group(function(){
+Route::controller(AttendanceReportController::class)->group(function () {
     Route::get('/attendancereport', 'attendancereport')->name('report');
 });
 
-Route::controller(AdminDashboard::class)->group(function() {
-    Route::get('/admin/dashboard', 'index')->name('admin.dashboard');
-    Route::get('/admin/attendance', 'attendance')->name('admin.attendance');
-});
 
-Route::controller(LeadController::class)->group(function() {
+Route::controller(LeadController::class)->group(function () {
     Route::get('/employee/leads', 'index')->name('employee.leads');
     Route::get('employee/lead/create', 'create')->name('lead.create');
     Route::post('employee/lead/create', 'store');
-    Route::get('employee/lead/{lead}/edit', 'edit')->name('lead.edit');
+    Route::get('/employee/lead/{lead}/show', 'show')->name('employee.lead.show');
+    Route::get('employee/lead/{lead}/edit', 'edit')->name('employee.lead.edit');
     Route::patch('employee/lead/{lead}/edit', 'update');
-    Route::delete('employee/lead/{lead}/destroy', 'destroy')->name('lead.destroy');
+    Route::delete('employee/lead/{lead}/destroy', 'destroy')->name('employee.lead.destroy');
+});
+
+Route::controller(AdminDashboard::class)->group(function () {
+    Route::get('/admin/dashboard', 'index')->name('admin.dashboard');
+    Route::get('/admin/attendance', 'attendance')->name('admin.attendance');
+    Route::get('/admin/lead', 'lead')->name('admin.lead');
+    Route::get('/admin/lead/{lead}/show', 'show')->name('admin.lead.show');
 });

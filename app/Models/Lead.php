@@ -14,6 +14,7 @@ class Lead extends Model
         'phone_number',
         'time_zone',
         'remark',
+        'user_id',
     ];
 
 }

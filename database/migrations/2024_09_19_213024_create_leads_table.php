@@ -13,11 +13,12 @@ return new class extends Migration
     {
         Schema::create('leads', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->string('name');
             $table->string('email');
             $table->string('phone_number');
             $table->string('time_zone');
-            $table->string('remark');
+            $table->text('remark');
             $table->timestamps();
         });
     }

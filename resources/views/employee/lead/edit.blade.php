@@ -3,24 +3,23 @@
 @section('content')
     <div class="container-fluid p-0">
 
-        <h1 class="h1 mb-3">Leads</h1>
-
         <div class="row">
             <div class="col-12">
+                @include('partials.alert')
                 <div class="card">
                     <div class="card-body">
                         <div class="card-header">
                             <div class="row">
                                 <div class="col-6">
-                                    <h2 class="m-0">leads</h2>
+                                    <h2 class="m-0">Lead</h2>
                                 </div>
                                 <div class="col-6 text-end">
-                                    <a href="{{ route('employee.leads') }}" class="btn btn-outline-primary">Back</a>
+                                    <a href="{{ route('employee.lead.show', $lead) }}" class="btn btn-outline-primary">Back</a>
                                 </div>
                             </div>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('lead.edit', $lead) }}" method="post">
+                            <form action="{{ route('employee.lead.edit', $lead) }}" method="post">
                                 @csrf
                                 @method('PATCH')
                                 <div class="mb-3">

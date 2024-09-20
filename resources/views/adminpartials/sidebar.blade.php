@@ -6,7 +6,7 @@
 
         <ul class="sidebar-nav">
             <li class="sidebar-item">
-                <a class="sidebar-link" href="{{ route('admin.dashboard') }}">
+                <a class="sidebar-link"  href="{{ route('admin.dashboard') }}">
                     <i class="align-middle" data-feather="book"></i> <span class="align-middle">Dashboard</span>
                 </a>
             </li>
@@ -16,8 +16,13 @@
                 </a>
             </li>
             <li class="sidebar-item">
-                <a class="sidebar-link" href="">
-                    <i class="align-middle" data-feather="book"></i> <span class="align-middle">Todo</span>
+                <a class="sidebar-link" href="{{ route('admin.lead') }}">
+                    <i class="align-middle" data-feather="book"></i> <span class="align-middle">Leads</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="{{ route('register') }}">
+                    <i class="align-middle" data-feather="book"></i> <span class="align-middle">New Registration</span>
                 </a>
             </li>
         </ul>

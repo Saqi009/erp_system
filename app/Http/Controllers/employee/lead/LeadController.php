@@ -3,18 +3,20 @@
 namespace App\Http\Controllers\employee\lead;
 
 use App\Models\Lead;
-use App\Models\leads\edit;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
-use function PHPSTORM_META\time_zone;
 
 class LeadController extends Controller
 {
-   public function index(){
-    return view('employee.lead.index',[
-        'leads' => Lead::all(),
-    ]);
+    public function index()
+    {
+        // $user = User::whereId(Autjh::id())->with('contacts')->first();
+
+        return view('employee.lead.index', [
+            'leads' => Auth::user()->leads
+        ]);
     }
 
     /**
@@ -28,7 +30,7 @@ class LeadController extends Controller
             'CST',
         ];
         return view('employee.lead.create', [
-            'time_zones' => $time_zones
+            'time_zones' => $time_zones,
         ]);
     }
 
@@ -42,7 +44,7 @@ class LeadController extends Controller
             'email' => ['required', 'email'],
             'time_zone' => ['required', 'string'],
             'phone_number' => ['required'],
-            'remark'=> ['required'],
+            'remark' => ['required'],
         ]);
 
         $data = [
@@ -51,13 +53,30 @@ class LeadController extends Controller
             'time_zone' => $request->time_zone,
             'phone_number' => $request->phone_number,
             'remark' => $request->remark,
+            'user_id' => Auth::id()
         ];
 
         if (Lead::create($data)) {
-            return redirect()->back()->with(['success' => 'Magic has been spelled!']);
+            return redirect()->back()->with(['success' => 'Successfully, stored the data!']);
         } else {
-            return redirect()->back()->with(['failure' => 'Magic has failed to spell!']);
+            return redirect()->back()->with(['failure' => 'Something went wrong !']);
         }
+    }
+
+
+
+    public function show(Lead $lead)
+    {
+        $time_zones = [
+            "EST",
+            "PST",
+            "CST",
+        ];
+
+        return view('employee.lead.show', [
+            'time_zones' => $time_zones,
+            'lead' => $lead,
+        ]);
     }
 
     /**
@@ -70,6 +89,7 @@ class LeadController extends Controller
             "PST",
             "CST",
         ];
+
         return view('employee.lead.edit', [
             'time_zones' => $time_zones,
             'lead' => $lead,
@@ -90,7 +110,7 @@ class LeadController extends Controller
         ]);
 
         if ($lead->update($request->all())) {
-            return redirect()->back()->with(['success' => 'Magic has been spelled!']);
+            return redirect()->back()->with(['success' => 'Successfully, Updated data!']);
         } else {
             return redirect()->back()->with(['failure' => 'Magic has failed to spell!']);
         }
@@ -102,10 +122,10 @@ class LeadController extends Controller
     public function destroy(Lead $lead)
     {
         if ($lead->delete()) {
-            return redirect()->back()->with(['success' => 'Magic has been spelled!']);
+            return redirect()->route('employee.leads')->with(['success' => "Successfully, Deleted data"]);
         } else {
             return redirect()->back()->with(['failure' => 'Magic has failed to spell!']);
         }
     }
-}
 
+}
