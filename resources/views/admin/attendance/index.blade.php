@@ -5,12 +5,13 @@
 
         <h1 class="h3 mb-3">Attendance</h1>
 
-        <form action="" class="row mb-4">
+        <form action="{{ route('admin.attendance') }}" method="get" class="row mb-4">
             <div class="col-7">
-                <input type="text" class="form-control" id="search" name="search">
+                <input type="text" class="form-control" id="search" name="search" placeholder="Search">
             </div>
             <div class="col-5">
                 <input type="submit" name="submit" value="submit" class="btn btn-primary">
+                <input type="submit" name="submit" value="reset" class="btn btn-success">
             </div>
         </form>
         {{-- @dump($attendances) --}}

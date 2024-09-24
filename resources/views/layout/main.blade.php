@@ -6,7 +6,6 @@
 <body>
     <div class="wrapper">
         @include('partials.sidebar')
-
         <div class="main">
             @include('partials.topbar')
             <main class="content">
@@ -17,6 +16,8 @@
         </div>
     </div>
 
-        @include('partials.scripts')
+    @include('partials.scripts')
+
 </body>
+
 </html>

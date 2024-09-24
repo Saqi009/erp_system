@@ -39,6 +39,7 @@
                                     <thead>
                                         <tr>
                                             <th>Sr. No.</th>
+                                            <th>Employees Name</th>
                                             <th>Name</th>
                                             <th>Email</th>
                                             <th>Time Zone</th>
@@ -50,6 +51,7 @@
                                         @foreach ($leads as $lead)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $lead->user->name }}</td>
                                                 <td>{{ $lead->name }}</td>
                                                 <td>{{ $lead->email }}</td>
                                                 <td>{{ $lead->time_zone }}</td>
@@ -71,9 +73,6 @@
                                 <div class="alert alert-info m-0">No record found!</div>
                             @endif
                         </div>
-
-
-
                     </div>
                 </div>
             </div>

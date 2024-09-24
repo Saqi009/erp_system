@@ -9,7 +9,7 @@
             <div class="col-12">
                 <div class="card p-4">
                     @include('partials.alert')
-                    <form action="{{ route('register') }}" method="POST">
+                    <form action="{{ route('admin.register') }}" method="POST">
                         @csrf
                         <div class="mb-3">
                             <label for="name" class="form-label">Name</label>

@@ -48,4 +48,8 @@ class User extends Authenticatable
     public function leads() {
         return $this->hasMany(Lead::class);
     }
+
+    public function todos() {
+        return $this->hasMany(Todo::class);
+    }
 }

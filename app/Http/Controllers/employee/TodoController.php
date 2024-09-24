@@ -5,6 +5,7 @@ namespace App\Http\Controllers\employee;
 use App\Models\Todo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class TodoController extends Controller
 {
@@ -14,7 +15,7 @@ class TodoController extends Controller
     public function index()
     {
         return view('employee.todo.index', [
-            'tasks' => Todo::all(),
+            'tasks' => Auth::user()->todos
         ]);
     }
 
@@ -37,6 +38,7 @@ class TodoController extends Controller
 
         $data = [
             'lists' => $request->lists,
+            'user_id' => Auth::id(),
         ];
 
         if(Todo::create($data)) {

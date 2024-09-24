@@ -18,7 +18,7 @@
                     <a class="dropdown-item" href="{{ route('profile') }}">
                         <i class="align-middle me-1" data-feather="user"></i> Profile
                     </a>
-                    <form action="{{ route('logout') }}" method="">
+                    <form action="{{ route('logout') }}" method="post">
                         @csrf
                         <input type="submit" class="dropdown-item" value="Log out" >
                     </form>

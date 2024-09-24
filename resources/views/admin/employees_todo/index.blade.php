@@ -1,4 +1,4 @@
-@extends('layout.main')
+@extends('adminlayout.main')
 
 @section('content')
     <div class="container-fluid p-0">
@@ -6,17 +6,16 @@
         <div class="row">
             <div class="col-12">
                 <div class="card p-2">
-                    {{-- <div class="card-body"> --}}
                     <div class="mt-5 container m-auto ">
                         <h3 id="heading-1" class="mb-3">Todo App</h3>
                         @include('partials.alert')
 
-                        <form action="{{ route('todo') }}" method="post" class="d-flex">
+                        {{-- <form action="{{ route('todo') }}" method="post" class="d-flex">
                             @csrf
                             <input type="text" placeholder="Enter the task." id="add-input"
                                 class="round p-2 gap=3 form-control" name="lists">
                             <input type="submit" value="Add Task" id="btn-submit" class="btn btn-primary ml-2">
-                        </form>
+                        </form> --}}
                         <div>
                             @error('lists')
                                 <div class="text-danger">{{ $message }}</div>
@@ -27,15 +26,16 @@
                             <table class="table mt-5 table-bordered">
                                 <thead>
                                     <tr>
+                                        <th>Employees Name</th>
                                         <th class="col-8">Tasks</th>
-                                        <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($tasks as $task)
                                         <tr>
+                                            <td>{{ $task->user->name }}</td>
                                             <td>{{ $task->lists }}</td>
-                                            <td>
+                                            {{-- <td>
                                                 <div class="row">
                                                     <div class="col-md-6 text-end">
                                                         <a href="{{ route('todo.edit', $task) }}"
@@ -50,7 +50,7 @@
                                                         </form>
                                                     </div>
                                                 </div>
-                                            </td>
+                                            </td> --}}
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -59,13 +59,10 @@
                             <div class="alert alert-info">No Records Found!</div>
                         @endif
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
-    </div>
-    </div>
 
-    </div>
 @endsection
+F

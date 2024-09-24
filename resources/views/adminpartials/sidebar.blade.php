@@ -21,7 +21,12 @@
                 </a>
             </li>
             <li class="sidebar-item">
-                <a class="sidebar-link" href="{{ route('register') }}">
+                <a class="sidebar-link" href="{{ route('admin.employees') }}">
+                    <i class="align-middle" data-feather="book"></i><span class="align-middle">Employee Todo Lists</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="{{ route('admin.register') }}">
                     <i class="align-middle" data-feather="book"></i> <span class="align-middle">New Registration</span>
                 </a>
             </li>

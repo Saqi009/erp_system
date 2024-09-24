@@ -21,7 +21,6 @@ class AddAttendanceController extends Controller
             'name' => ['required'],
             'work_shift' => ['required'],
             'floor_manager' => ['required'],
-            // 'date' => ['required'],
         ]);
 
         $data = [
@@ -36,9 +35,5 @@ class AddAttendanceController extends Controller
         } else {
             return redirect()->back()->with(['failure' => "Your attendance has not been stamped!"]);
         }
-
-
-
     }
-
 }
