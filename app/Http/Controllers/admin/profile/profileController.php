@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\admin\profile;
+namespace App\Http\Controllers\admin\Profile;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-class profileController extends Controller
+class ProfileController extends Controller
 {
     public function profile()
     {
@@ -18,7 +18,7 @@ class profileController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string'],
-            'email' => ['required', 'email', 'unique:users,email,' . Auth::user()->id . ',id'],
+            'user_name' => ['required', 'unique:users,user_name,' . Auth::user()->id . ',id'],
         ]);
 
         if (Auth::user()->update($request->all())) {

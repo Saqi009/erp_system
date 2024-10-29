@@ -5,23 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Attendance extends Model
+class Reminder extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
-        'name',
-        'work_shift',
-        'floor_manager',
-        'date',
-        'status',
-        'leave_reason',
+        // 'lead_id',
+        'reminder_time',
+        'user_id'
     ];
 
-
-    public function user()
+    public function lead()
     {
+        return $this->belongsTo(Lead::class);
+    }
+
+    public function user() {
         return $this->belongsTo(User::class);
     }
+
 }

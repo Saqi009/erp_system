@@ -33,11 +33,11 @@
 
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="email" class="form-label">Email</label>
-                                        <input type="email" name="email" id="email"
-                                            class="form-control @error('email') is-invalid @enderror"
-                                            value="{{ old('email') ?? Auth::user()->email }}" placeholder="Enter your email!">
-                                        @error('email')
+                                        <label for="user_name" class="form-label">Username</label>
+                                        <input type="text" name="user_name" id="user_name"
+                                            class="form-control @error('user_name') is-invalid @enderror"
+                                            value="{{ old('user_name') ?? Auth::user()->user_name }}" placeholder="Enter your username!">
+                                        @error('user_name')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>

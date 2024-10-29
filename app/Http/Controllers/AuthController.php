@@ -16,7 +16,7 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'email' => ['required', 'email'],
+            'user_name' => ['required'],
             'password' => ['required'],
         ]);
 
@@ -35,7 +35,6 @@ class AuthController extends Controller
             return redirect()->back()->with(['failure' => "Invalid login details!"]);
         }
     }
-
 
     public function logout()
     {

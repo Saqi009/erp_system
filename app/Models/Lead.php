@@ -21,4 +21,9 @@ class Lead extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function reminders()
+    {
+        return $this->hasMany(Reminder::class);
+    }
+
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\employee\lead;
 
 use App\Models\Lead;
+use App\Models\Reminder;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +16,7 @@ class LeadController extends Controller
         // $user = User::whereId(Autjh::id())->with('contacts')->first();
 
         return view('employee.lead.index', [
-            'leads' => Auth::user()->leads
+            'leads' => Auth::user()->leads,
         ]);
     }
 

@@ -23,10 +23,10 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
-                                name="email" value="{{ old('email') }}" placeholder="Email!">
-                            @error('email')
+                            <label for="user_name" class="form-label">Username</label>
+                            <input type="text" class="form-control @error('user_name') is-invalid @enderror" id="user_name"
+                                name="user_name" value="{{ old('user_name') }}" placeholder="Username!">
+                            @error('user_name')
                                 <div class="text-danger">
                                     {{ $message }}
                                 </div>

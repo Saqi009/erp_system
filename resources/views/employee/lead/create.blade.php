@@ -26,7 +26,7 @@
                         @csrf
                         <div class="mb-3">
                             <label for="name" class="form-label">Name</label>
-                            <input type="text" id="name" name="name" placeholder="lead name!"
+                            <input type="text" id="name" name="name" placeholder="Lead name"
                                 class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}">
 
                             @error('name')
@@ -36,7 +36,7 @@
 
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
-                            <input type="text" id="email" name="email" placeholder="lead email!"
+                            <input type="text" id="email" name="email" placeholder="Lead email"
                                 class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}">
 
                             @error('email')
@@ -46,7 +46,7 @@
 
                         <div class="mb-3">
                             <label for="phone_number" class="form-label">Phone Number</label>
-                            <input type="text" id="phone_number" name="phone_number" placeholder="lead phone_number!"
+                            <input type="text" id="phone_number" name="phone_number" placeholder="Lead phone number"
                                 class="form-control @error('phone_number') is-invalid @enderror"
                                 value="{{ old('phone_number') }}">
 
@@ -59,7 +59,7 @@
                             <label for="time_zone" class="form-label">Timezone</label>
                             <select id="time_zone" name="time_zone"
                                 class="form-select @error('time_zone') is-invalid @enderror">
-                                <option value="">Select a time_zone!</option>
+                                <option value="">Select a timezone</option>
                                 @foreach ($time_zones as $time_zone)
                                     <option value="{{ $time_zone }}" @selected($time_zone == old('time_zone'))>
                                         {{ $time_zone }}</option>

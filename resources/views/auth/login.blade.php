@@ -31,11 +31,11 @@
                     <div class="text-danger">{{ session('secondpanel') }}</div>
                 @endsession
                 @session('userpanel')
-                <div class="text-danger">{{ session('userpanel') }}</div>
-            @endsession
-                <span>or use your email password</span>
-                <input type="email" name="email" placeholder="Email">
-                @error('email')
+                    <div class="text-danger">{{ session('userpanel') }}</div>
+                @endsession
+                <span>or use your username password</span>
+                <input type="user_name" name="user_name" placeholder="Username">
+                @error('user_name')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
                 <input type="password" name="password" placeholder="Password">

@@ -11,15 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('attendances', function (Blueprint $table) {
+        Schema::create('reminders', function (Blueprint $table) {
             $table->id();
+            // $table->foreignId('lead_id')->references('id')->on('leads')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('name');
-            $table->string('work_shift')->nullable();
-            $table->string('floor_manager')->nullable();
-            $table->string('date');
-            $table->string('status');
-            $table->text('leave_reason')->nullable();
+            $table->dateTime('reminder_time');
             $table->timestamps();
         });
     }
@@ -29,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('attendances');
+        Schema::dropIfExists('reminders');
     }
 };

@@ -70,9 +70,10 @@
                                     @csrf
                                     <input type="submit" value="Delete" class="btn btn-danger">
                                 </form>
+
+                                <a href="{{ route('employee.lead.reminder', $lead) }}" class="btn btn-success">Add Reminder</a>
                             </div>
                         </div>
-
 
                     </div>
                 </div>

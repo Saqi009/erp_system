@@ -17,12 +17,13 @@ class RegistrationController extends Controller
     {
         $request->validate([
             'name' => ['required', 'min:3', 'max:50', 'string'],
-            'email' => ['required', 'email', 'unique:users,email'],
+            'user_name' => ['required', 'unique:users,user_name'],
             'password' => ['required', 'confirmed'],
         ]);
+        
         $data = [
             'name' => $request->name,
-            'email' => $request->email,
+            'user_name' => $request->user_name,
             'password' => $request->password
         ];
 

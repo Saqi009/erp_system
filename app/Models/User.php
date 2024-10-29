@@ -18,8 +18,17 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'email',
+        'real_name',
+        'user_name',
         'password',
+        'email',
+        'phone',
+        'cnic',
+        'dob',
+        'bank_no',
+        'jd',
+        'picture',
+        'about_me',
     ];
 
     /**
@@ -52,4 +61,12 @@ class User extends Authenticatable
     public function todos() {
         return $this->hasMany(Todo::class);
     }
+
+    public function attendances() {
+        return $this->hasMany(Attendance::class);
+    }
+    public function reminders() {
+        return $this->hasMany(Reminder::class);
+    }
+
 }
