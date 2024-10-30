@@ -31,11 +31,11 @@ class ContactController extends Controller
 
 
         if ($request->department == 'hr') {
-            $adminEmail = "asimcool9099@gmail.com";
+            $adminEmail = "naimsaqijee009@gmail.com";
         }
 
         if ($request->department == 'it') {
-            $adminEmail = "shehr@gmail.com";
+            $adminEmail = "asimcool9099@gmail.com";
         }
 
         if ($request->department == 'na') {

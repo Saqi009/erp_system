@@ -6,6 +6,7 @@ use App\Http\Controllers\ReminderController;
 use Illuminate\Auth\Middleware\Authenticate;
 use App\Http\Controllers\admin\AdminDashboard;
 use App\Http\Controllers\admin\ContactController as AdminContactController;
+use App\Http\Controllers\admin\EmployeeController;
 use App\Http\Controllers\employee\TodoController;
 use App\Http\Controllers\admin\RegistrationController;
 use App\Http\Controllers\employee\lead\LeadController;
@@ -99,4 +100,15 @@ Route::controller(ContactController::class)->group(function () {
 
 Route::controller(AdminContactController::class)->group(function () {
     Route::get('/admin/contact', 'index')->name('admin.contact');
+    Route::delete('admin/contact/{contact}/destroy', 'delete')->name('admin.contact.destroy');
+});
+
+Route::controller(EmployeeController::class)->group(function() {
+    Route::get('/admin/employee', 'index')->name('admin.employee');
+    Route::get('/admin/employee/{employee}/show', 'show')->name('admin.employee.show');
+    Route::get('/admin/employee/{employee}/edit', 'edit')->name('admin.employee.edit');
+    Route::patch('/admin/employee/{employee}/edit', 'update');
+    Route::get('/admin/employee/{employee}/password', 'password')->name('admin.employee.password');
+    Route::patch('/admin/employee/{employee}/password', 'password_update');
+    Route::delete('/admin/employee/{employee}/destroy', 'destroy')->name('admin.employee.destroy');
 });

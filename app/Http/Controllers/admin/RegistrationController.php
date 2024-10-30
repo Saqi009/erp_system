@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class RegistrationController extends Controller
 {
@@ -17,13 +18,13 @@ class RegistrationController extends Controller
     {
         $request->validate([
             'name' => ['required', 'min:3', 'max:50', 'string'],
-            'user_name' => ['required', 'unique:users,user_name'],
+            'user_email' => ['required', 'email', 'unique:users,user_email,' . Auth::user()->id . ',id'],
             'password' => ['required', 'confirmed'],
         ]);
-        
+
         $data = [
             'name' => $request->name,
-            'user_name' => $request->user_name,
+            'user_email' => $request->user_email,
             'password' => $request->password
         ];
 

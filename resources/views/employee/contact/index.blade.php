@@ -20,6 +20,7 @@
                     </div>
 
                     <div class="card-body">
+                        @include('partials.alert')
                         <form action="{{ route('employee.contact.send_email') }}" method="post">
                             @csrf
                             <div class="mb-3">

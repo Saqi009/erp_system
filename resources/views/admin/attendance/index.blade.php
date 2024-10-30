@@ -10,8 +10,7 @@
                 <input type="text" class="form-control" id="search" name="search" placeholder="Search">
             </div>
             <div class="col-5">
-                <input type="submit" name="submit" value="submit" class="btn btn-primary">
-                <input type="submit" name="submit" value="reset" class="btn btn-success">
+                <input type="submit" name="submit" value="Search" class="btn btn-primary">
             </div>
         </form>
         {{-- @dump($attendances) --}}

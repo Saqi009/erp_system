@@ -74,7 +74,6 @@
                                 <a href="{{ route('employee.lead.reminder', $lead) }}" class="btn btn-success">Add Reminder</a>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>

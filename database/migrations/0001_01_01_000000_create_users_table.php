@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('jd')->nullable();
             $table->string('picture')->nullable();
             $table->string('email')->unique()->nullable();
-            $table->string('user_name')->unique();
+            $table->string('user_email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('user_type')->default(0);
