@@ -12,7 +12,12 @@
             </li>
             <li class="sidebar-item">
                 <a class="sidebar-link"  href="{{ route('admin.employee') }}">
-                    <i class="align-middle" data-feather="book"></i> <span class="align-middle">Employees</span>
+                    <i class="align-middle" data-feather="book"></i> <span class="align-middle">Employees Info</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a class="sidebar-link"  href="{{ route('admin.employee_gallery') }}">
+                    <i class="align-middle" data-feather="book"></i> <span class="align-middle">Employees Gallery</span>
                 </a>
             </li>
             <li class="sidebar-item">
@@ -33,6 +38,11 @@
             <li class="sidebar-item">
                 <a class="sidebar-link" href="{{ route('admin.contact') }}">
                     <i class="align-middle" data-feather="book"></i> <span class="align-middle">Contacts</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="{{ route('admin.gallery') }}">
+                    <i class="align-middle" data-feather="book"></i> <span class="align-middle">Gallery</span>
                 </a>
             </li>
             <li class="sidebar-item">

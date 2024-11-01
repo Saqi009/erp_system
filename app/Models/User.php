@@ -58,6 +58,10 @@ class User extends Authenticatable
         return $this->hasMany(Lead::class);
     }
 
+    public function galleries() {
+        return $this->hasMany(Gallery::class);
+    }
+
     public function todos() {
         return $this->hasMany(Todo::class);
     }
@@ -69,4 +73,15 @@ class User extends Authenticatable
         return $this->hasMany(Reminder::class);
     }
 
+    public function images() {
+        return $this->hasMany(Image::class);
+    }
+
+    public function files() {
+        return $this->hasMany(Document::class);
+    }
+
+    public function videos() {
+        return $this->hasMany(Video::class);
+    }
 }

@@ -30,6 +30,11 @@
                     <i class="align-middle" data-feather="book"></i> <span class="align-middle">Contact</span>
                 </a>
             </li>
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="{{ route('employee.gallery') }}">
+                    <i class="align-middle" data-feather="book"></i> <span class="align-middle">Gallery</span>
+                </a>
+            </li>
 
         </ul>
     </div>
