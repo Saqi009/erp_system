@@ -46,6 +46,11 @@
                 </a>
             </li>
             <li class="sidebar-item">
+                <a class="sidebar-link" href="{{ route('admin.procurement') }}">
+                    <i class="align-middle" data-feather="book"></i> <span class="align-middle">Procurement</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
                 <a class="sidebar-link" href="{{ route('admin.register') }}">
                     <i class="align-middle" data-feather="book"></i> <span class="align-middle">New Registration</span>
                 </a>

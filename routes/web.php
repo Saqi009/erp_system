@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\FullProcurement;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GalleryController;
@@ -12,20 +13,25 @@ use App\Http\Controllers\employee\ContactController;
 use App\Http\Controllers\admin\RegistrationController;
 use App\Http\Controllers\employee\lead\LeadController;
 use Illuminate\Auth\Middleware\RedirectIfAuthenticated;
+use App\Http\Controllers\admin\EmployeeGalleryController;
 use App\Http\Controllers\admin\profile\ProfileController;
 use App\Http\Controllers\employee\gallery\FileController;
 use App\Http\Controllers\employee\gallery\ImageController;
 use App\Http\Controllers\employee\gallery\VideoController;
+use App\Http\Controllers\admin\procurement\ProcurementMonth;
+use App\Http\Controllers\employee\gallery\DocumentController;
 use App\Http\Controllers\employee\dashboard\DashboardController;
+use App\Http\Controllers\admin\procurement\ProcurementController;
 use App\Http\Controllers\employee\attendance\AddAttendanceController;
+use App\Http\Controllers\admin\procurement\ProcurementMonthController;
 use App\Http\Controllers\admin\ContactController as AdminContactController;
-use App\Http\Controllers\admin\EmployeeGalleryController;
-use App\Http\Controllers\admin\gallery\DocumentController as GalleryDocumentController;
+use App\Http\Controllers\admin\GalleryController as AdminGalleryController;
 use App\Http\Controllers\admin\gallery\ImageController as GalleryImageController;
 use App\Http\Controllers\admin\gallery\VideoController as GalleryVideoController;
-use App\Http\Controllers\admin\GalleryController as AdminGalleryController;
-use App\Http\Controllers\employee\gallery\DocumentController;
 use App\Http\Controllers\employee\ProfileController as EmployeeProfileController;
+use App\Http\Controllers\admin\gallery\DocumentController as GalleryDocumentController;
+use App\Http\Controllers\admin\procurement\AssignLaptopController;
+use App\Http\Controllers\admin\procurement\FullProcurementController;
 
 Route::controller(AuthController::class)->group(function () {
     Route::middleware(RedirectIfAuthenticated::class)->group(function () {
@@ -186,4 +192,36 @@ Route::controller(GalleryVideoController::class)->group(function () {
 
 Route::controller(EmployeeGalleryController::class)->group(function() {
     Route::get('/admin/employee_gallery', 'index')->name('admin.employee_gallery');
+});
+
+Route::controller(ProcurementController::class)->group(function() {
+    Route::get('/admin/procurement', 'index')->name('admin.procurement');
+});
+
+Route::controller(ProcurementMonthController::class)->group(function() {
+    Route::get('/admin/procurement/monthly_procurement', 'index')->name('admin.procurement.monthly_procurement');
+    Route::get('/admin/procurement/monthly_procurement/create', 'create')->name('admin.procurement.monthly_procurement.create');
+    Route::post('/admin/procurement/monthly_procurement/create', 'store');
+    Route::get('/admin/procurement/{procurement}/monthly_procurement/edit', 'edit')->name('admin.procurement.monthly_procurement.edit');
+    Route::patch('/admin/procurement/{procurement}/monthly_procurement/edit', 'update');
+    Route::delete('/admin/procurement/{procurement}/monthly_procurement/destroy', 'destroy')->name('admin.procurement.monthly_procurement.destroy');
+});
+
+Route::controller(FullProcurementController::class)->group(function() {
+    Route::get('/admin/procurement/full_procurement', 'index')->name('admin.procurement.full_procurement');
+    Route::get('/admin/procurement/full_procurement/create', 'create')->name('admin.procurement.full_procurement.create');
+    Route::post('/admin/procurement/full_procurement/create', 'store');
+    Route::get('/admin/procurement/{procurement}/full_procurement/edit', 'edit')->name('admin.procurement.full_procurement.edit');
+    Route::patch('/admin/procurement/{procurement}/full_procurement/edit', 'update');
+    Route::delete('/admin/procurement/{procurement}/full_procurement/destroy', 'destroy')->name('admin.procurement.full_procurement.destroy');
+});
+
+Route::controller(AssignLaptopController::class)->group(function() {
+    Route::get('/admin/procurement/assign_laptop_procurement', 'index')->name('admin.procurement.assign_laptop_procurement');
+    Route::get('/admin/procurement/assign_laptop_procurement/create', 'create')->name('admin.procurement.assign_laptop_procurement.create');
+    Route::post('/admin/procurement/assign_laptop_procurement/create', 'store');
+    Route::get('/admin/procurement/{laptop}/assign_laptop_procurement/edit', 'edit')->name('admin.procurement.assign_laptop_procurement.edit');
+    Route::patch('/admin/procurement/{laptop}/assign_laptop_procurement/edit', 'update');
+    Route::delete('/admin/procurement/{laptop}/assign_laptop_procurement/destroy', 'destroy')->name('admin.procurement.assign_laptop_procurement.destroy');
+
 });

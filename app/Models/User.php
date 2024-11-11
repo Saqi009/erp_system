@@ -58,10 +58,6 @@ class User extends Authenticatable
         return $this->hasMany(Lead::class);
     }
 
-    public function galleries() {
-        return $this->hasMany(Gallery::class);
-    }
-
     public function todos() {
         return $this->hasMany(Todo::class);
     }
@@ -83,5 +79,17 @@ class User extends Authenticatable
 
     public function videos() {
         return $this->hasMany(Video::class);
+    }
+
+    public function procurement_months() {
+        return $this->hasMany(ProcurementMonth::class);
+    }
+
+    public function full_procurements() {
+        return $this->hasMany(FullProcurement::class);
+    }
+
+    public function assign_laptop() {
+        return $this->hasMany(LaptopProcurement::class);
     }
 }
