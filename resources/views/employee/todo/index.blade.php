@@ -11,11 +11,15 @@
                         <h3 id="heading-1" class="mb-3">Todo App</h3>
                         @include('partials.alert')
 
-                        <form action="{{ route('todo') }}" method="post" class="d-flex">
+                        <form action="{{ route('todo') }}" method="post" class="row">
                             @csrf
-                            <input type="text" placeholder="Enter the task." id="add-input"
-                                class="round p-2 gap=3 form-control" name="lists">
-                            <input type="submit" value="Add Task" id="btn-submit" class="btn btn-primary ml-2">
+                            <div class="col-md-9">
+                                <input type="text" placeholder="Enter the task." id="add-input"
+                                    class="round p-2 gap=3 form-control" name="lists">
+                            </div>
+                            <div class="col-md-3">
+                                <input type="submit" value="Add Task" id="btn-submit" class="btn btn-primary ml-2">
+                            </div>
                         </form>
                         <div>
                             @error('lists')
@@ -60,12 +64,10 @@
                         @endif
                     </div>
 
+                    {{-- </div> --}}
                 </div>
             </div>
         </div>
-    </div>
-    </div>
-    </div>
 
     </div>
 @endsection

@@ -1,22 +1,32 @@
 <nav id="sidebar" class="sidebar js-sidebar">
     <div class="sidebar-content js-simplebar">
-        <a class="sidebar-brand" href="">
-            <span class="align-middle" style="font-size: 35px">Zingo Assist</span>
+        <a class="sidebar-brand text-decoration-none" style="font-size: 35px" href="{{ route('admin.dashboard') }}">
+            Zingo Assist
         </a>
 
         <ul class="sidebar-nav">
             <li class="sidebar-item">
-                <a class="sidebar-link"  href="{{ route('admin.dashboard') }}">
+                <a class="sidebar-link" href="{{ route('admin.dashboard') }}">
                     <i class="align-middle" data-feather="book"></i> <span class="align-middle">Dashboard</span>
                 </a>
             </li>
             <li class="sidebar-item">
-                <a class="sidebar-link"  href="{{ route('admin.employee') }}">
+                <a class="sidebar-link" href="{{ route('admin.admin_lead') }}">
+                    <i class="align-middle" data-feather="book"></i> <span class="align-middle">Your Lead</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="{{ route('admin.admin_todo') }}">
+                    <i class="align-middle" data-feather="book"></i> <span class="align-middle">Your Todo</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="{{ route('admin.employee') }}">
                     <i class="align-middle" data-feather="book"></i> <span class="align-middle">Employees Info</span>
                 </a>
             </li>
             <li class="sidebar-item">
-                <a class="sidebar-link"  href="{{ route('admin.employee_gallery') }}">
+                <a class="sidebar-link" href="{{ route('admin.employee_gallery') }}">
                     <i class="align-middle" data-feather="book"></i> <span class="align-middle">Employees Gallery</span>
                 </a>
             </li>
@@ -27,12 +37,13 @@
             </li>
             <li class="sidebar-item">
                 <a class="sidebar-link" href="{{ route('admin.lead') }}">
-                    <i class="align-middle" data-feather="book"></i> <span class="align-middle">Leads</span>
+                    <i class="align-middle" data-feather="book"></i> <span class="align-middle">Employee Leads</span>
                 </a>
             </li>
             <li class="sidebar-item">
                 <a class="sidebar-link" href="{{ route('admin.employees') }}">
-                    <i class="align-middle" data-feather="book"></i><span class="align-middle">Employee Todo Lists</span>
+                    <i class="align-middle" data-feather="book"></i><span class="align-middle">Employee Todo
+                        Lists</span>
                 </a>
             </li>
             <li class="sidebar-item">

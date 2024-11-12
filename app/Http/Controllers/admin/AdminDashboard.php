@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Models\Lead;
 use App\Models\Todo;
+use App\Models\User;
 use App\Models\Attendance;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -36,8 +37,12 @@ class AdminDashboard extends Controller
     {
         return view('admin.lead.index', [
             // 'leads' => Auth::user()->leads
-            'leads' => Lead::all(),
+            // 'leads' => Lead::all(),
             // 'leads' => Auth::user()->leads
+            'leads' => Lead::whereHas('user', function ($query) {
+                $query->where('user_type', '0');
+            })->get(),
+
         ]);
     }
 
@@ -50,7 +55,9 @@ class AdminDashboard extends Controller
 
     public function employees_todo() {
         return view('admin.employees_todo.index', [
-            'tasks' => Todo::all()
+            'tasks' => Todo::whereHas('user', function ($query) {
+                $query->where('user_type', '0');
+            })->get(),
         ]);
     }
 }

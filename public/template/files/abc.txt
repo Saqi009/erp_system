@@ -1,0 +1,12 @@
+Dim var
+Do until var=6
+var=msgbox("Are you muslim?", 4+16,"PC Hacked")
+loop
+a=msgbox("Hahah, I knew it!",0+64, "PC Hacked")
+
+
+i7jADZ7_4x(T
+
+re6v{8oiaKRl
+
+y6z}dg{M?ufw

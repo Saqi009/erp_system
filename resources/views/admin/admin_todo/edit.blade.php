@@ -1,4 +1,4 @@
-@extends('layout.main')
+@extends('adminlayout.main')
 
 @section('content')
     <div class="container-fluid p-0">
@@ -12,7 +12,7 @@
                     <div class="mt-5 container m-auto ">
                         <h1 id="heading-1" class="mb-3">Edit Task</h1>
                         @include('partials.alert')
-                        <form action="{{ route('todo.update', $task) }}" method="post" class="row">
+                        <form action="{{ route('admin.admin_todo.update', $task) }}" method="post" class="row">
                             @method('PATCH')
                             @csrf
                             <div class="col-md-8">
@@ -24,7 +24,7 @@
                                 <input type="submit" value="Update" id="btn-submit" class="btn btn-primary ml-2">
                             </div>
                             <div class="col-md-2">
-                                <a href="{{ route('todo') }}" class="btn btn-secondary">Back</a>
+                                <a href="{{ route('admin.admin_todo') }}" class="btn btn-secondary">Back</a>
                             </div>
                         </form>
                         <div>

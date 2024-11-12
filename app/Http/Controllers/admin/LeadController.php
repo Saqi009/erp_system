@@ -1,28 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\employee\lead;
+namespace App\Http\Controllers\admin;
 
 use App\Models\Lead;
-use App\Models\Reminder;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-
 class LeadController extends Controller
 {
-    public function index()
-    {
-        // $user = User::whereId(Autjh::id())->with('contacts')->first();
-
-        return view('employee.lead.index', [
+    public function index() {
+        return view('admin.admin_lead.index', [
             'leads' => Auth::user()->leads,
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         $time_zones = [
@@ -30,14 +22,12 @@ class LeadController extends Controller
             'PST',
             'CST',
         ];
-        return view('employee.lead.create', [
+
+        return view('admin.admin_lead.create', [
             'time_zones' => $time_zones,
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -60,11 +50,9 @@ class LeadController extends Controller
         if (Lead::create($data)) {
             return redirect()->back()->with(['success' => 'Successfully, stored the data!']);
         } else {
-            return redirect()->back()->with(['failure' => 'Something went wrong !']);
+            return redirect()->back()->with(['failure' => 'Something went wrong!']);
         }
     }
-
-
 
     public function show(Lead $lead)
     {
@@ -74,15 +62,12 @@ class LeadController extends Controller
             "CST",
         ];
 
-        return view('employee.lead.show', [
+        return view('admin.admin_lead.show', [
             'time_zones' => $time_zones,
             'lead' => $lead,
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Lead $lead)
     {
         $time_zones = [
@@ -97,9 +82,6 @@ class LeadController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Lead $lead)
     {
         $request->validate([
@@ -117,16 +99,13 @@ class LeadController extends Controller
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Lead $lead)
     {
         if ($lead->delete()) {
-            return redirect()->route('employee.leads')->with(['success' => "Successfully, Deleted data"]);
+            return redirect()->route('admin.admin_lead')->with(['success' => "Successfully, Deleted data"]);
         } else {
             return redirect()->back()->with(['failure' => 'Magic has failed to spell!']);
         }
     }
-
+    
 }

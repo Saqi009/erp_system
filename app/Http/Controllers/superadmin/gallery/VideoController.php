@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\admin\gallery;
+namespace App\Http\Controllers\superadmin\gallery;
 
 use App\Models\Video;
 use Illuminate\Http\Request;
@@ -12,7 +12,7 @@ class VideoController extends Controller
 {
     public function videos()
     {
-        return view('admin.gallery.videos');
+        return view('superadmin.gallery.videos');
     }
 
     public function videos_upload(Request $request)
@@ -44,7 +44,7 @@ class VideoController extends Controller
 
     public function video_view()
     {
-        return view('admin.gallery.video.index', [
+        return view('superadmin.gallery.video.index', [
             'videos' => Auth::user()->videos,
         ]);
     }

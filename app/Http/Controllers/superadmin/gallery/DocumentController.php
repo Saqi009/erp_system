@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\admin\gallery;
+namespace App\Http\Controllers\superadmin\gallery;
 
 use App\Models\Document;
 use Illuminate\Http\Request;
@@ -12,7 +12,7 @@ class DocumentController extends Controller
 {
     public function files()
     {
-        return view('admin.gallery.files');
+        return view('superadmin.gallery.files');
     }
 
     public function files_upload(Request $request)
@@ -44,7 +44,7 @@ class DocumentController extends Controller
 
     public function file_view()
     {
-        return view('admin.gallery.file.index', [
+        return view('superadmin.gallery.file.index', [
             'files' => Auth::user()->files,
         ]);
     }
@@ -66,7 +66,7 @@ class DocumentController extends Controller
                 return redirect()->back()->with(['error' => 'File does not exist.']);
             }
         } else {
-            return redirect()->back()->with(['error' => 'Video not found.']);
+            return redirect()->back()->with(['error' => 'File not found.']);
         }
     }
 }

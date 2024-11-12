@@ -1,7 +1,7 @@
 <nav id="sidebar" class="sidebar js-sidebar">
     <div class="sidebar-content js-simplebar">
-        <a class="sidebar-brand" href="{{ route('dashboard') }}">
-            <span class="align-middle" style="font-size: 35px">Zingo Assist</span>
+        <a class="sidebar-brand text-decoration-none" style="font-size: 35px" href="{{ route('dashboard') }}">
+            Zingo Assist
         </a>
 
         <ul class="sidebar-nav">

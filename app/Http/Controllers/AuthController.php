@@ -25,7 +25,7 @@ class AuthController extends Controller
             if ($user_type == '1') {
                 return redirect()->route('admin.dashboard');
             } else if ($user_type == '2') {
-                return redirect()->back()->with(['secondpanel' => "Second panel"]);
+                return redirect()->route('superadmin.dashboard');
             } else if ($user_type == '3') {
                 return redirect()->back()->with(['userpanel' => "third panel"]);
             } else {
