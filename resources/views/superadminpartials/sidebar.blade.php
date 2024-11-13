@@ -6,8 +6,18 @@
 
         <ul class="sidebar-nav">
             <li class="sidebar-item">
-                <a class="sidebar-link" href="{{ route('admin.dashboard') }}">
+                <a class="sidebar-link" href="{{ route('superadmin.dashboard') }}">
                     <i class="align-middle" data-feather="book"></i> <span class="align-middle">Dashboard</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="{{ route('superadmin.employee_info') }}">
+                    <i class="align-middle" data-feather="book"></i> <span class="align-middle">Employee Info</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="{{ route('superadmin.attendance') }}">
+                    <i class="align-middle" data-feather="book"></i> <span class="align-middle">Attendance</span>
                 </a>
             </li>
             <li class="sidebar-item">

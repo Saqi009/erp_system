@@ -34,7 +34,9 @@ use App\Http\Controllers\admin\LeadController as AdminLeadController;
 use App\Http\Controllers\admin\procurement\AssignLaptopController;
 use App\Http\Controllers\admin\procurement\FullProcurementController;
 use App\Http\Controllers\admin\TodoController as AdminTodoController;
+use App\Http\Controllers\superadmin\AttendanceController;
 use App\Http\Controllers\superadmin\DashboardController as SuperadminDashboardController;
+use App\Http\Controllers\superadmin\EmployeeController as SuperadminEmployeeController;
 use App\Http\Controllers\superadmin\gallery\DocumentController as SuperadminGalleryDocumentController;
 use App\Http\Controllers\superadmin\gallery\ImageController as SuperadminGalleryImageController;
 use App\Http\Controllers\superadmin\gallery\VideoController as SuperadminGalleryVideoController;
@@ -73,6 +75,12 @@ Route::middleware(Authenticate::class)->group(function () {
         Route::get('/profile', 'profile')->name('profile');
         Route::patch('/profile/details', 'details')->name('profile.details');
         Route::patch('/profile/password', 'password')->name('profile.password');
+
+        // after add this
+        Route::get('/admin/profile/show_more', 'add_more')->name('admin.profile.add_more');
+        Route::get('/admin/profile/create', 'create')->name('admin.profile.create');
+        Route::patch('/admin/profile/store', 'store')->name('admin.profile.store');
+
     });
 
     Route::controller(AddAttendanceController::class)->group(function () {
@@ -98,6 +106,15 @@ Route::middleware(Authenticate::class)->group(function () {
         Route::get('/admin/lead', 'lead')->name('admin.lead');
         Route::get('/admin/lead/{lead}/show', 'show')->name('admin.lead.show');
         Route::get('/admin/employees', 'employees_todo')->name('admin.employees');
+    });
+
+    Route::controller(AttendanceController::class)->group(function () {
+        Route::get('/admin/your_attendance', 'index')->name('admin.your_attendance');
+
+        Route::get('/admin/your_attendance', 'addattendance')->name('admin.your_attendance');
+        Route::post('/admin/your_attendance/mark', 'mark')->name('admin.your_attendance.mark');
+        Route::post('/admin/your_attendance/leave', 'leave')->name('admin.your_attendance.leave');
+        Route::get('/admin/your_attendance/show', 'yourattendance')->name('admin.your_attendance.show');
     });
 
     Route::controller(ReminderController::class)->group(function () {
@@ -249,20 +266,20 @@ Route::middleware(Authenticate::class)->group(function () {
 
     Route::controller(SuperadminDashboardController::class)->group(function () {
         // Route::middleware(RedirectIfAuthenticated::class)->group(function () {
-            Route::get('/superadmin/dashboard', 'index')->name('superadmin.dashboard');
+        Route::get('/superadmin/dashboard', 'index')->name('superadmin.dashboard');
         // });
     });
 
-    Route::controller(SuperadminTodoController::class)->group(function() {
+    Route::controller(SuperadminTodoController::class)->group(function () {
         Route::get('/superadmin/admin_todo', 'index')->name('superadmin.admin_todo');
     });
 
-    Route::controller(SuperadminLeadController::class)->group(function() {
+    Route::controller(SuperadminLeadController::class)->group(function () {
         Route::get('/superadmin/admin_lead', 'index')->name('superadmin.admin_lead');
         Route::get('/superadmin/admin_lead/{lead}/show', 'show')->name('superadmin.admin_lead.show');
     });
 
-    Route::controller(SuperadminGalleryController::class)->group(function() {
+    Route::controller(SuperadminGalleryController::class)->group(function () {
         Route::get('/superadmin/gallery', 'index')->name('superadmin.gallery');
     });
 
@@ -294,4 +311,17 @@ Route::middleware(Authenticate::class)->group(function () {
         Route::delete('/superadmin/gallery/video/{video}/destroy', 'destroy')->name('superadmin.gallery.video.destroy');
     });
 
+    Route::controller(AttendanceController::class)->group(function () {
+        Route::get('/superadmin.attendance', 'index')->name('superadmin.attendance');
+    });
+
+    Route::controller(SuperadminEmployeeController::class)->group(function () {
+        Route::get('/superadmin/employee_info', 'index')->name('superadmin.employee_info');
+        Route::get('/superadmin/employee_info/{employee}/show', 'show')->name('superadmin.employee_info.show');
+        Route::get('/superadmin/employee_info/{employee}/edit', 'edit')->name('superadmin.employee_info.edit');
+        Route::patch('/superadmin/employee_info/{employee}/edit', 'update');
+        Route::get('/superadmin/employee_info/{employee}/password', 'password')->name('superadmin.employee_info.password');
+        Route::patch('/superadmin/employee_info/{employee}/password', 'password_update');
+        Route::delete('/superadmin/employee_info/{employee}/destroy', 'destroy')->name('superadmin.employee_info.destroy');
+    });
 });

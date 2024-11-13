@@ -4,8 +4,13 @@
 
 @section('content')
     <div class="container-fluid p-0">
-        <div class="mb-3">
-            <h1 class="h3 d-inline align-middle">Profile</h1>
+        <div class="row">
+            <div class="mb-3 col-md-6">
+                <h1 class="h3 d-inline align-middle">Profile</h1>
+            </div>
+            <div class="col-md-6 text-end">
+                <a href="{{ route('admin.profile.add_more') }}" class="btn btn-primary">Add More...</a>
+            </div>
         </div>
         <div class="row">
             <div class="col-md-12">
@@ -97,41 +102,6 @@
                     </div>
                 </div>
             </div>
-
-            {{-- <div class="col-md-5 col-xl-4">
-                <div class="card mb-3">
-                    <div class="card-header">
-                        <h5 class="card-title mb-0">Profile Picture</h5>
-                    </div>
-                    <div class="card-body text-center">
-                        @if ($user->picture)
-                            <img src="{{ asset('template/img/photos/' . $user->picture) }}" alt=}}"
-                                class="img-fluid rounded-circle mb-2" width="128" height="128" />
-                        @else
-                            <img src="https://ui-avatars.com/api/?name={{ $user->name }}" alt="Placeholder picture"
-                                class="img-fluid rounded-circle mb-2" width="128" height="128" />
-                        @endif
-
-                        <div>
-                            <form action="{{ route('profile.picture') }}" method="post" enctype="multipart/form-data">
-                                @csrf
-                                @method('PATCH')
-                                <div class="mb-3">
-                                    <input type="file" name="picture" id="picture"
-                                        class="form-control @error('picture') is-invalid @enderror">
-                                    @error('picture')
-                                        <div class="text-danger">{{ $message }}</div>
-                                    @enderror
-                                </div>
-
-                                <div>
-                                    <input type="submit" value="Update Picture" class="btn btn-primary">
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
         </div>
     </div>
 @endsection

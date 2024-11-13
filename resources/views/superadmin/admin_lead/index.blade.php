@@ -62,6 +62,15 @@
                                             </tr>
                                         @endforeach
                                     </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="4">
+                                                <div class="pagination-container">
+                                                    {{ $leads->links('pagination::bootstrap-4') }}
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tfoot>
                                 </table>
                             @else
                                 <div class="alert alert-info m-0">No record found!</div>

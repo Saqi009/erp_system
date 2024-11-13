@@ -11,6 +11,11 @@
                 </a>
             </li>
             <li class="sidebar-item">
+                <a class="sidebar-link" href="{{ route('admin.your_attendance') }}">
+                    <i class="align-middle" data-feather="book"></i> <span class="align-middle">Your Attendance</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
                 <a class="sidebar-link" href="{{ route('admin.admin_lead') }}">
                     <i class="align-middle" data-feather="book"></i> <span class="align-middle">Your Lead</span>
                 </a>
@@ -32,7 +37,7 @@
             </li>
             <li class="sidebar-item">
                 <a class="sidebar-link" href="{{ route('admin.attendance') }}">
-                    <i class="align-middle" data-feather="book"></i> <span class="align-middle">Attendance</span>
+                    <i class="align-middle" data-feather="book"></i> <span class="align-middle">Employee Attendance</span>
                 </a>
             </li>
             <li class="sidebar-item">

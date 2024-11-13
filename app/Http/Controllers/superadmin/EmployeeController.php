@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\superadmin;
 
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -10,23 +10,32 @@ use Illuminate\Support\Facades\Hash;
 
 class EmployeeController extends Controller
 {
+
+    private $user;
+
+    public function __construct()
+    {
+        $this->user =  User::find(Auth::id());
+    }
+
+
     public function index()
     {
-        return view('admin.employee.index', [
+        return view('superadmin.employee_info.index', [
             'employees' => User::where('user_type', '=', 0)->get(),
         ]);
     }
 
     public function show(User $employee)
     {
-        return view('admin.employee.show', [
+        return view('superadmin.employee_info.show', [
             'employee' => $employee,
         ]);
     }
 
     public function edit(User $employee)
     {
-        return view('admin.employee.edit', [
+        return view('superadmin.employee_info.edit', [
             "employee" => $employee,
         ]);
     }
@@ -35,7 +44,7 @@ class EmployeeController extends Controller
     {
         $request->validate([
             'name' => ['required'],
-            'user_email' => ['required', 'email', 'unique:users,user_email,' . $employee->id . ',id'],
+            'user_email' => ['required', 'email', 'unique:users,user_email,' . $employee->id. ',id'],
         ]);
 
         $data = [
@@ -50,8 +59,9 @@ class EmployeeController extends Controller
         }
     }
 
-    public function password(User $employee) {
-        return view('admin.employee.password', [
+    public function password(User $employee)
+    {
+        return view('superadmin.employee_info.password', [
             'employee' => $employee,
         ]);
     }
@@ -81,10 +91,9 @@ class EmployeeController extends Controller
     public function destroy(User $employee)
     {
         if ($employee->delete()) {
-            return redirect()->route('admin.employee')->with(['success' => "Successfully, Deleted message!"]);
+            return redirect()->route('superadmin.employee_info')->with(['success' => "Successfully, Deleted message!"]);
         } else {
             return redirect()->back()->with(['failure' => 'Something went wrong!']);
         }
     }
-
 }

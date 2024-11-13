@@ -12,7 +12,7 @@ class LeadController extends Controller
         return view('superadmin.admin_lead.index', [
             'leads' => Lead::whereHas('user', function ($query) {
                 $query->where('user_type', '1');
-            })->get(),
+            })->paginate(3),
         ]);
     }
 
