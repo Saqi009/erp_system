@@ -12,7 +12,7 @@ class TodoController extends Controller
     public function index()
     {
         return view('admin.admin_todo.index', [
-            'tasks' => Auth::user()->todos
+            'tasks' => Auth::user()->todos()->paginate(5),
         ]);
     }
 

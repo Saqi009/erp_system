@@ -1,4 +1,4 @@
-@extends('adminlayout.main')
+@extends('superadminlayout.main')
 
 @section('title', 'Profile')
 
@@ -10,14 +10,14 @@
             </div>
             <div class="col-md-6">
                 {{-- <a href="" class="btn btn-primary">Back</a> --}}
-                <a href="{{ route('admin.procurement.assign_laptop_procurement') }}" style="float: right"
+                <a href="{{ route('superadmin.procurement.assign_laptop_procurement') }}" style="float: right"
                     class="btn btn-primary">Back</a>
             </div>
         </div>
 
         <div class="row">
             @include('adminpartials.alert')
-            <form action="{{ route('admin.procurement.assign_laptop_procurement.edit', $laptop) }}" method="post">
+            <form action="{{ route('superadmin.procurement.assign_laptop_procurement.edit', $laptop) }}" method="post">
                 @method('PATCH')
                 @csrf
                 <div class="row">

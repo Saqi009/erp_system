@@ -21,6 +21,7 @@
                         @if (count($attendances) > 0)
                             <table class="table">
                                 <thead>
+                                    <th>Sr No.</th>
                                     <th>Name</th>
                                     <th>Floor Manager</th>
                                     <th>Work Shift</th>
@@ -30,6 +31,7 @@
                                 <tbody>
                                     @foreach ($attendances as $attendance)
                                         <tr>
+                                            <td>{{ $attendances->firstItem() + $loop->index }}</td>
                                             <td>{{ $attendance->name }}</td>
                                             <td>{{ $attendance->floor_manager }}</td>
                                             <td>{{ $attendance->work_shift }}</td>
@@ -38,6 +40,15 @@
                                         </tr>
                                     @endforeach
                                 </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="4">
+                                            <div class="pagination-container">
+                                                {{ $attendances->links('pagination::bootstrap-4') }}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tfoot>
                             </table>
                         @else
                             <div class="alert alert-info">No Attandance Record Found!</div>

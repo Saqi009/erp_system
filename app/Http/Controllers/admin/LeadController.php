@@ -11,7 +11,7 @@ class LeadController extends Controller
 {
     public function index() {
         return view('admin.admin_lead.index', [
-            'leads' => Auth::user()->leads,
+            'leads' => Auth::user()->leads()->paginate(7),
         ]);
     }
 
@@ -107,5 +107,5 @@ class LeadController extends Controller
             return redirect()->back()->with(['failure' => 'Magic has failed to spell!']);
         }
     }
-    
+
 }

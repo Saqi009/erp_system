@@ -3,14 +3,14 @@
 @section('content')
     <div class="container-fluid p-0">
 
-        <h1 class="h3 mb-3">Employees</h1>
+        <h1 class="h3 mb-3">Admin</h1>
 
         <div class="row">
             <div class="col-12">
                 <div class="card">
                     @include('partials.alert')
                     <div class="card-body">
-                        @if (count($employees) > 0)
+                        @if (count($admins) > 0)
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -22,14 +22,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($employees as $employee)
+                                    @foreach ($admins as $admin)
                                             <tr>
-                                                <td>{{ $employees->firstItem() + $loop->index }}</td>
-                                                <td>{!! $employee->real_name ?? '<em>Null</em>' !!}</td>
-                                                <td>{!! $employee->name ?? '<em>Null</em>' !!}</td>
-                                                <td>{!! $employee->phone ?? '<em>Null</em>' !!}</td>
+                                                <td>{{ $admins->firstItem() + $loop->iteration }}</td>
+                                                <td>{!! $admin->real_name ?? '<em>Null</em>' !!}</td>
+                                                <td>{!! $admin->name ?? '<em>Null</em>' !!}</td>
+                                                <td>{!! $admin->phone ?? '<em>Null</em>' !!}</td>
                                                 <td>
-                                                    <a href="{{ route('superadmin.employee_info.show', $employee) }}" class="btn btn-primary">Show More</a>
+                                                    <a href="{{ route('superadmin.admin_info.show', $admin) }}" class="btn btn-primary">Show More</a>
                                                 </td>
                                             </tr>
                                     @endforeach
@@ -38,14 +38,14 @@
                                     <tr>
                                         <td colspan="4">
                                             <div class="pagination-container">
-                                                {{ $employees->links('pagination::bootstrap-4') }}
+                                                {{ $admins->links('pagination::bootstrap-4') }}
                                             </div>
                                         </td>
                                     </tr>
                                 </tfoot>
                             </table>
                         @else
-                            <div class="alert alert-info">No employee found!</div>
+                            <div class="alert alert-info">No admin found!</div>
                         @endif
                     </div>
                 </div>

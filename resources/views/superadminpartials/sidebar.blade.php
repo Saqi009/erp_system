@@ -16,6 +16,11 @@
                 </a>
             </li>
             <li class="sidebar-item">
+                <a class="sidebar-link" href="{{ route('superadmin.admin_info') }}">
+                    <i class="align-middle" data-feather="book"></i> <span class="align-middle">Admin Info</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
                 <a class="sidebar-link" href="{{ route('superadmin.attendance') }}">
                     <i class="align-middle" data-feather="book"></i> <span class="align-middle">Attendance</span>
                 </a>
@@ -33,6 +38,16 @@
             <li class="sidebar-item">
                 <a class="sidebar-link" href="{{ route('superadmin.gallery') }}">
                     <i class="align-middle" data-feather="book"></i> <span class="align-middle">Gallery</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="{{ route('superadmin.procurement') }}">
+                    <i class="align-middle" data-feather="book"></i> <span class="align-middle">Procument</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="{{ route('superadmin.register') }}">
+                    <i class="align-middle" data-feather="book"></i> <span class="align-middle">New Registration</span>
                 </a>
             </li>
         </ul>

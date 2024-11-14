@@ -5,10 +5,10 @@
 
         <div class="row">
             <div class="col-md-6">
-                <h1 class="h3 mb-3">Employee Info</h1>
+                <h1 class="h3 mb-3">Admin Info</h1>
             </div>
             <div class="col-md-6">
-                <a href="{{ route('superadmin.employee_info') }}" style="float: right" class="btn btn-primary">Back</a>
+                <a href="{{ route('superadmin.admin_info') }}" style="float: right" class="btn btn-primary">Back</a>
             </div>
         </div>
 
@@ -23,7 +23,7 @@
                                     Real Name:
                                 </div>
                                 <div class="col-8">
-                                    {!! $employee->real_name ?? '<em>N/A</em>' !!}
+                                    {!! $admin->real_name ?? '<em>N/A</em>' !!}
                                 </div>
                             </div>
                             <hr>
@@ -32,7 +32,7 @@
                                     Pseudo Name:
                                 </div>
                                 <div class="col-8">
-                                    {!! $employee->name ?? '<em>N/A</em>' !!}
+                                    {!! $admin->name ?? '<em>N/A</em>' !!}
                                 </div>
                             </div>
                             <hr>
@@ -41,7 +41,7 @@
                                     Date of Birth:
                                 </div>
                                 <div class="col-8">
-                                    {!! $employee->dob ?? '<em>N/A</em>' !!}
+                                    {!! $admin->dob ?? '<em>N/A</em>' !!}
                                 </div>
                             </div>
                             <hr>
@@ -51,7 +51,7 @@
                                     Email:
                                 </div>
                                 <div class="col-8">
-                                    {!! $employee->email ?? '<em>N/A</em>' !!}
+                                    {!! $admin->email ?? '<em>N/A</em>' !!}
                                 </div>
                             </div>
                             <hr>
@@ -60,7 +60,7 @@
                                     Phone:
                                 </div>
                                 <div class="col-8">
-                                    {!! $employee->phone ?? '<em>N/A</em>' !!}
+                                    {!! $admin->phone ?? '<em>N/A</em>' !!}
                                 </div>
                             </div>
                             <hr>
@@ -69,7 +69,7 @@
                                     CNIC:
                                 </div>
                                 <div class="col-8">
-                                    {!! $employee->cnic ?? '<em>N/A</em>' !!}
+                                    {!! $admin->cnic ?? '<em>N/A</em>' !!}
                                 </div>
                             </div>
                             <hr>
@@ -78,7 +78,7 @@
                                     Account Number:
                                 </div>
                                 <div class="col-8">
-                                    {!! $employee->bank_no ?? '<em>N/A</em>' !!}
+                                    {!! $admin->bank_no ?? '<em>N/A</em>' !!}
                                 </div>
                             </div>
                             <hr>
@@ -87,28 +87,28 @@
                                     Job Description:
                                 </div>
                                 <div class="col-8">
-                                    {!! $employee->jd ?? '<em>N/A</em>' !!}
+                                    {!! $admin->jd ?? '<em>N/A</em>' !!}
                                 </div>
                             </div>
                             <hr>
                             <div class="mb-2">
-                                <a href="{{ route('superadmin.employee_info.edit', $employee) }}" class="btn btn-primary">Edit</a>
+                                <a href="{{ route('superadmin.admin_info.edit', $admin) }}" class="btn btn-primary">Edit</a>
 
-                                <form action="{{ route('superadmin.employee_info.destroy', $employee) }}" method='post' class="d-inline">
+                                <form action="{{ route('superadmin.admin_info.destroy', $admin) }}" method='post' class="d-inline">
                                     @method('DELETE')
                                     @csrf
                                     <input type="submit" value="Delete" class="btn btn-danger">
                                 </form>
                             </div>
 
-                            {{-- <a href="{{ route('superadmin.employee_info.password', $employee) }}">Change employee password</a> --}}
+                            {{-- <a href="{{ route('superadmin.admin_info.password', $admin) }}">Change Admin password</a> --}}
                         </div>
                         <div class="col-md-6 align-content-center">
-                            @if ($employee->picture)
-                                <img src="{{ asset('template/img/photos/' . $employee->picture) }}" alt="picture"
+                            @if ($admin->picture)
+                                <img src="{{ asset('template/img/photos/' . $admin->picture) }}" alt="picture"
                                     class="img-fluid rounded-circle m-2" width="280px" height="280px" />
                             @else
-                                <img src="https://ui-avatars.com/api/?name={{ $employee->name }}" alt="picture"
+                                <img src="https://ui-avatars.com/api/?name={{ $admin->name }}" alt="picture"
                                     class="img-fluid rounded-circle m-2" width="280px" height="280px" />
                             @endif
                         </div>

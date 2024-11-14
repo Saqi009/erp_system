@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\FullProcurement;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GalleryController;
@@ -10,15 +9,12 @@ use App\Http\Controllers\admin\AdminDashboard;
 use App\Http\Controllers\employee\TodoController;
 use App\Http\Controllers\admin\EmployeeController;
 use App\Http\Controllers\employee\ContactController;
-use App\Http\Controllers\admin\RegistrationController;
 use App\Http\Controllers\employee\lead\LeadController;
 use Illuminate\Auth\Middleware\RedirectIfAuthenticated;
 use App\Http\Controllers\admin\EmployeeGalleryController;
 use App\Http\Controllers\admin\profile\ProfileController;
-use App\Http\Controllers\employee\gallery\FileController;
 use App\Http\Controllers\employee\gallery\ImageController;
 use App\Http\Controllers\employee\gallery\VideoController;
-use App\Http\Controllers\admin\procurement\ProcurementMonth;
 use App\Http\Controllers\employee\gallery\DocumentController;
 use App\Http\Controllers\employee\dashboard\DashboardController;
 use App\Http\Controllers\admin\procurement\ProcurementController;
@@ -34,6 +30,7 @@ use App\Http\Controllers\admin\LeadController as AdminLeadController;
 use App\Http\Controllers\admin\procurement\AssignLaptopController;
 use App\Http\Controllers\admin\procurement\FullProcurementController;
 use App\Http\Controllers\admin\TodoController as AdminTodoController;
+use App\Http\Controllers\superadmin\AdminController;
 use App\Http\Controllers\superadmin\AttendanceController;
 use App\Http\Controllers\superadmin\DashboardController as SuperadminDashboardController;
 use App\Http\Controllers\superadmin\EmployeeController as SuperadminEmployeeController;
@@ -42,6 +39,11 @@ use App\Http\Controllers\superadmin\gallery\ImageController as SuperadminGallery
 use App\Http\Controllers\superadmin\gallery\VideoController as SuperadminGalleryVideoController;
 use App\Http\Controllers\superadmin\GalleryController as SuperadminGalleryController;
 use App\Http\Controllers\superadmin\LeadController as SuperadminLeadController;
+use App\Http\Controllers\superadmin\procurement\AssignLaptopController as ProcurementAssignLaptopController;
+use App\Http\Controllers\superadmin\procurement\FullProcurementController as ProcurementFullProcurementController;
+use App\Http\Controllers\superadmin\procurement\ProcurementController as ProcurementProcurementController;
+use App\Http\Controllers\superadmin\procurement\ProcurementMonthController as ProcurementProcurementMonthController;
+use App\Http\Controllers\superadmin\RegistrationController as SuperadminRegistrationController;
 use App\Http\Controllers\superadmin\TodoController as SuperadminTodoController;
 
 Route::controller(AuthController::class)->group(function () {
@@ -52,9 +54,9 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('/logout', 'logout')->name('logout');
 });
 
-Route::controller(RegistrationController::class)->group(function () {
-    Route::get('/admin/register', 'index')->name('admin.register');
-    Route::post('/admin/register', 'register');
+Route::controller(SuperadminRegistrationController::class)->group(function () {
+    Route::get('/superadmin/register', 'index')->name('superadmin.register');
+    Route::post('/superadmin/register', 'register');
 });
 
 Route::middleware(Authenticate::class)->group(function () {
@@ -77,6 +79,7 @@ Route::middleware(Authenticate::class)->group(function () {
         Route::patch('/profile/password', 'password')->name('profile.password');
 
         // after add this
+
         Route::get('/admin/profile/show_more', 'add_more')->name('admin.profile.add_more');
         Route::get('/admin/profile/create', 'create')->name('admin.profile.create');
         Route::patch('/admin/profile/store', 'store')->name('admin.profile.store');
@@ -324,4 +327,49 @@ Route::middleware(Authenticate::class)->group(function () {
         Route::patch('/superadmin/employee_info/{employee}/password', 'password_update');
         Route::delete('/superadmin/employee_info/{employee}/destroy', 'destroy')->name('superadmin.employee_info.destroy');
     });
+
+    Route::controller(AdminController::class)->group(function () {
+        Route::get('/superadmin/admin_info', 'index')->name('superadmin.admin_info');
+        Route::get('/superadmin/admin_info/{admin}/show', 'show')->name('superadmin.admin_info.show');
+        Route::get('/superadmin/admin_info/{admin}/edit', 'edit')->name('superadmin.admin_info.edit');
+        Route::patch('/superadmin/admin_info/{admin}/edit', 'update');
+        Route::get('/superadmin/admin_info/{admin}/password', 'password')->name('superadmin.admin_info.password');
+        Route::patch('/superadmin/admin_info/{admin}/password', 'password_update');
+        Route::delete('/superadmin/admin_info/{admin}/destroy', 'destroy')->name('superadmin.admin_info.destroy');
+    });
+
+
+
+    Route::controller(ProcurementProcurementController::class)->group(function () {
+        Route::get('/superadmin/procurement', 'index')->name('superadmin.procurement');
+    });
+
+    Route::controller(ProcurementProcurementMonthController::class)->group(function () {
+        Route::get('/superadmin/procurement/monthly_procurement', 'index')->name('superadmin.procurement.monthly_procurement');
+        Route::get('/superadmin/procurement/monthly_procurement/create', 'create')->name('superadmin.procurement.monthly_procurement.create');
+        Route::post('/superadmin/procurement/monthly_procurement/create', 'store');
+        Route::get('/superadmin/procurement/{procurement}/monthly_procurement/edit', 'edit')->name('superadmin.procurement.monthly_procurement.edit');
+        Route::patch('/superadmin/procurement/{procurement}/monthly_procurement/edit', 'update');
+        Route::delete('/superadmin/procurement/{procurement}/monthly_procurement/destroy', 'destroy')->name('superadmin.procurement.monthly_procurement.destroy');
+    });
+
+    Route::controller(ProcurementFullProcurementController::class)->group(function () {
+        Route::get('/superadmin/procurement/full_procurement', 'index')->name('superadmin.procurement.full_procurement');
+        Route::get('/superadmin/procurement/full_procurement/create', 'create')->name('superadmin.procurement.full_procurement.create');
+        Route::post('/superadmin/procurement/full_procurement/create', 'store');
+        Route::get('/superadmin/procurement/{procurement}/full_procurement/edit', 'edit')->name('superadmin.procurement.full_procurement.edit');
+        Route::patch('/superadmin/procurement/{procurement}/full_procurement/edit', 'update');
+        Route::delete('/superadmin/procurement/{procurement}/full_procurement/destroy', 'destroy')->name('superadmin.procurement.full_procurement.destroy');
+    });
+
+    Route::controller(ProcurementAssignLaptopController::class)->group(function () {
+        Route::get('/superadmin/procurement/assign_laptop_procurement', 'index')->name('superadmin.procurement.assign_laptop_procurement');
+        Route::get('/superadmin/procurement/assign_laptop_procurement/create', 'create')->name('superadmin.procurement.assign_laptop_procurement.create');
+        Route::post('/superadmin/procurement/assign_laptop_procurement/create', 'store');
+        Route::get('/superadmin/procurement/{laptop}/assign_laptop_procurement/edit', 'edit')->name('superadmin.procurement.assign_laptop_procurement.edit');
+        Route::patch('/superadmin/procurement/{laptop}/assign_laptop_procurement/edit', 'update');
+        Route::delete('/superadmin/procurement/{laptop}/assign_laptop_procurement/destroy', 'destroy')->name('superadmin.procurement.assign_laptop_procurement.destroy');
+    });
+
+
 });

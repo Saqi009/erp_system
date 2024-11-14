@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-class EmployeeController extends Controller
+class AdminController extends Controller
 {
 
     private $user;
@@ -21,30 +21,30 @@ class EmployeeController extends Controller
 
     public function index()
     {
-        return view('superadmin.employee_info.index', [
-            'employees' => User::where('user_type', '=', 0)->paginate(7),
+        return view('superadmin.admin_info.index', [
+            'admins' => User::where('user_type', '=', 1)->paginate(7),
         ]);
     }
 
-    public function show(User $employee)
+    public function show(User $admin)
     {
-        return view('superadmin.employee_info.show', [
-            'employee' => $employee,
+        return view('superadmin.admin_info.show', [
+            'admin' => $admin,
         ]);
     }
 
-    public function edit(User $employee)
+    public function edit(User $admin)
     {
-        return view('superadmin.employee_info.edit', [
-            "employee" => $employee,
+        return view('superadmin.admin_info.edit', [
+            "admin" => $admin,
         ]);
     }
 
-    public function update(Request $request, User $employee)
+    public function update(Request $request, User $admin)
     {
         $request->validate([
             'name' => ['required'],
-            'user_email' => ['required', 'email', 'unique:users,user_email,' . $employee->id. ',id'],
+            'user_email' => ['required', 'email', 'unique:users,user_email,' . $admin->id . ',id'],
         ]);
 
         $data = [
@@ -52,29 +52,29 @@ class EmployeeController extends Controller
             'user_email' => $request->user_email,
         ];
 
-        if ($employee->update($data)) {
+        if ($admin->update($data)) {
             return redirect()->back()->with(['success' => "Successfully, Updated data!"]);
         } else {
             return redirect()->back()->with(['failure' => "Something went wrong!"]);
         }
     }
 
-    public function password(User $employee)
+    public function password(User $admin)
     {
-        return view('superadmin.employee_info.password', [
-            'employee' => $employee,
+        return view('superadmin.admin_info.password', [
+            'admin' => $admin,
         ]);
     }
 
-    public function password_update(Request $request, User $employee)
+    public function password_update(Request $request, User $admin)
     {
         $request->validate([
             'password' => ['required', 'confirmed'],
             'current_password' => ['required'],
         ]);
 
-        if (Hash::check($request->current_password, $employee->password)) {
-            if ($employee->update($request->all())) {
+        if (Hash::check($request->current_password, $admin->password)) {
+            if ($admin->update($request->all())) {
                 return redirect()->back()->with([
                     'success' => 'Successfully, Updated Password!'
                 ]);
@@ -88,10 +88,10 @@ class EmployeeController extends Controller
         }
     }
 
-    public function destroy(User $employee)
+    public function destroy(User $admin)
     {
-        if ($employee->delete()) {
-            return redirect()->route('superadmin.employee_info')->with(['success' => "Successfully, Deleted message!"]);
+        if ($admin->delete()) {
+            return redirect()->route('superadmin.admin_info')->with(['success' => "Successfully, Deleted message!"]);
         } else {
             return redirect()->back()->with(['failure' => 'Something went wrong!']);
         }

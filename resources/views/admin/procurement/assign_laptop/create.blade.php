@@ -51,10 +51,13 @@
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="shift" class="form-label">Shift</label>
-                        <select class="form-select  @error('shift') is-invalid @enderror" name="shift" id="shift" name="shift">
+                        <select class="form-select  @error('shift') is-invalid @enderror" name="shift" id="shift"
+                            name="shift">
                             <option value="" selected>Choose</option>
-                            <option value="Day Shift">Day Shift</option>
-                            <option value="Night Shift">Night Shift</option>
+                            @foreach ($shifts as $shift)
+                                <option value="{{ $shift }}" @selected($shift == old('shift'))>
+                                    {{ $shift }}</option>
+                            @endforeach
                         </select>
 
                         @error('shift')

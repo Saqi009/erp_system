@@ -12,7 +12,7 @@ class TodoController extends Controller
         return view('superadmin.admin_todo.index', [
             'tasks' => Todo::whereHas('user', function ($query) {
                 $query->where('user_type', '1');
-            })->get(),
+            })->paginate(7),
         ]);
     }
 }

@@ -37,7 +37,7 @@
                                     <tbody>
                                         @foreach ($leads as $lead)
                                             <tr>
-                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $leads->firstItem() + $loop->index }}</td>
                                                 <td>{{ $lead->name }}</td>
                                                 <td>{{ $lead->email }}</td>
                                                 <td>{{ $lead->time_zone }}</td>
@@ -48,6 +48,15 @@
                                             </tr>
                                         @endforeach
                                     </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="4">
+                                                <div class="pagination-container">
+                                                    {{ $leads->links('pagination::bootstrap-4') }}
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tfoot>
                                 </table>
                             @else
                                 <div class="alert alert-info m-0">No record found!</div>

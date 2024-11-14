@@ -24,11 +24,11 @@ class AdminDashboard extends Controller
 
         if ($search) {
             return view('admin.attendance.index', [
-                'attendances' => Attendance::where('name', "like", "%" . $search . "%")->get()
+                'attendances' => Attendance::where('name', "like", "%" . $search . "%")->paginate(5)
             ]);
         } else {
             return view('admin.attendance.index', [
-                'attendances' => Attendance::all(),
+                'attendances' => Attendance::paginate(5),
             ]);
         }
     }
@@ -36,12 +36,9 @@ class AdminDashboard extends Controller
     public function lead()
     {
         return view('admin.lead.index', [
-            // 'leads' => Auth::user()->leads
-            // 'leads' => Lead::all(),
-            // 'leads' => Auth::user()->leads
             'leads' => Lead::whereHas('user', function ($query) {
                 $query->where('user_type', '0');
-            })->get(),
+            })->paginate(5),
 
         ]);
     }

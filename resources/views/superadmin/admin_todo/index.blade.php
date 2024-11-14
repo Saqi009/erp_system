@@ -20,7 +20,7 @@
                             <table class="table mt-5 table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>Employees Name</th>
+                                        <th>Admins Name</th>
                                         <th class="col-8">Tasks</th>
                                     </tr>
                                 </thead>
@@ -32,6 +32,15 @@
                                         </tr>
                                     @endforeach
                                 </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="4">
+                                            <div class="pagination-container">
+                                                {{ $tasks->links('pagination::bootstrap-4') }}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tfoot>
                             </table>
                         @else
                             <div class="alert alert-info">No Records Found!</div>

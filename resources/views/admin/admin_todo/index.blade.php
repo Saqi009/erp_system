@@ -28,9 +28,10 @@
                         </div>
 
                         @if (count($tasks) > 0)
-                            <table class="table mt-5 table-bordered">
+                            <table class="table mt-5 ">
                                 <thead>
                                     <tr>
+                                        <th>Sr No.</th>
                                         <th class="col-8">Tasks</th>
                                         <th class="text-center">Action</th>
                                     </tr>
@@ -38,6 +39,7 @@
                                 <tbody>
                                     @foreach ($tasks as $task)
                                         <tr>
+                                            <td>{{ $tasks->firstItem() + $loop->index }}</td>
                                             <td>{{ $task->lists }}</td>
                                             <td>
                                                 <div class="row">
@@ -59,6 +61,15 @@
                                         </tr>
                                     @endforeach
                                 </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="4">
+                                            <div class="pagination-container">
+                                                {{ $tasks->links('pagination::bootstrap-4') }}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tfoot>
                             </table>
                         @else
                             <div class="alert alert-info mt-3">No Records Found!</div>

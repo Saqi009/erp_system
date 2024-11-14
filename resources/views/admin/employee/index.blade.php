@@ -24,7 +24,7 @@
                                 <tbody>
                                     @foreach ($employees as $employee)
                                             <tr>
-                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $employees->firstItem() + $loop->index }}</td>
                                                 <td>{!! $employee->real_name ?? '<em>Null</em>' !!}</td>
                                                 <td>{!! $employee->name ?? '<em>Null</em>' !!}</td>
                                                 <td>{!! $employee->phone ?? '<em>Null</em>' !!}</td>
@@ -34,6 +34,15 @@
                                             </tr>
                                     @endforeach
                                 </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="4">
+                                            <div class="pagination-container">
+                                                {{ $employees->links('pagination::bootstrap-4') }}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tfoot>
                             </table>
                         @else
                             <div class="alert alert-info">No employee found!</div>

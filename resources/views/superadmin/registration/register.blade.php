@@ -1,4 +1,4 @@
-@extends('adminlayout.main')
+@extends('superadminlayout.main')
 
 @section('content')
     <div class="container-fluid p-0">
@@ -9,7 +9,7 @@
             <div class="col-12">
                 <div class="card p-4">
                     @include('partials.alert')
-                    <form action="{{ route('admin.register') }}" method="POST">
+                    <form action="{{ route('superadmin.register') }}" method="POST">
                         @csrf
                         <div class="mb-3">
                             <label for="name" class="form-label">Name</label>
@@ -25,7 +25,7 @@
                         <div class="mb-3">
                             <label for="user_email" class="form-label">Email</label>
                             <input type="email" class="form-control @error('user_email') is-invalid @enderror" id="user_email"
-                                name="user_email" value="{{ old('user_email') }}" placeholder="Email    !">
+                                name="user_email" value="{{ old('user_email') }}" placeholder="Email!">
                             @error('user_email')
                                 <div class="text-danger">
                                     {{ $message }}

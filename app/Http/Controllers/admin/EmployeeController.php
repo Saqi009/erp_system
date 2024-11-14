@@ -13,7 +13,7 @@ class EmployeeController extends Controller
     public function index()
     {
         return view('admin.employee.index', [
-            'employees' => User::where('user_type', '=', 0)->get(),
+            'employees' => User::where('user_type', '=', 0)->paginate(5),
         ]);
     }
 
