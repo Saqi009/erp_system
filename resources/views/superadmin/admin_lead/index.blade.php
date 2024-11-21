@@ -50,7 +50,7 @@
                                     <tbody>
                                         @foreach ($leads as $lead)
                                             <tr>
-                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $leads->firstItem() + $loop->index }}</td>
                                                 <td>{{ $lead->user->name }}</td>
                                                 <td>{{ $lead->name }}</td>
                                                 <td>{{ $lead->email }}</td>

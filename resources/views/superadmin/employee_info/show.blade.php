@@ -102,6 +102,7 @@
                             </div>
 
                             {{-- <a href="{{ route('superadmin.employee_info.password', $employee) }}">Change employee password</a> --}}
+                            
                         </div>
                         <div class="col-md-6 align-content-center">
                             @if ($employee->picture)
